@@ -1,0 +1,25 @@
+
+# Read data from input file
+file = open("input.txt", "r")
+
+# Read all lines
+lines = file.readlines()
+
+# Count total lines
+print("Total number of lines:", len(lines))
+
+# Extract first two lines
+first_two = lines[:2]
+
+# Close input file
+file.close()
+
+# Write extracted lines into output file
+output = open("output.txt", "w")
+
+output.writelines(first_two)
+
+output.close()
+
+print("First two lines copied successfully!")
+print("Data written into output.txt")
