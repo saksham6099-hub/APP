@@ -1,0 +1,85 @@
+
+# Decorator
+def report_format(function):
+    def wrapper(self, style="normal"):
+        print("=" * 40)
+        print("REPORT GENERATOR")
+        print("=" * 40)
+
+        function(self, style)
+
+        print("=" * 40)
+        print("END OF REPORT")
+        print("=" * 40)
+
+    return wrapper
+
+
+# Report Class
+class Report:
+
+    # Magic Method
+    def __init__(self, title, sections):
+        self.title = title
+        self.sections = sections
+
+    # Class Method
+    @classmethod
+    def sample_report(cls):
+        title = "Student Performance Report"
+
+        sections = [
+            "Student Name : Rahul",
+            "Marks : 89",
+            "Grade : A"
+        ]
+
+        return cls(title, sections)
+
+    # Decorator
+    @report_format
+    def display(self, style="normal"):
+        title = self.title
+
+        if style == "uppercase":
+            title = title.upper()
+        elif style == "lowercase":
+            title = title.lower()
+
+        print("Title:", title)
+        print()
+
+        for item in self.sections:
+            if style == "uppercase":
+                item = item.upper()
+            elif style == "lowercase":
+                item = item.lower()
+
+            print(item)
+
+    # Magic Method
+    def __str__(self):
+        return f"Report Title: {self.title}"
+
+    # Magic Method
+    def __len__(self):
+        return len(self.sections)
+
+
+# Main Program
+report = Report.sample_report()
+
+print(report)
+print("Total Sections:", len(report))
+
+# Normal Report
+print("\nNormal Format:")
+report.display()
+
+# Uppercase Report
+print("\nUppercase Format:")
+report.display("uppercase")
+
+# Lowercase Report
+print("\nLowercase Format:")
+report.display("lowercase")
