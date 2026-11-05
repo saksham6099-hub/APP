@@ -1,0 +1,28 @@
+import numpy as np
+
+# Create an array containing temperatures for 10 days
+temp = np.array([28, 30, 32, 29, 31, 33, 27, 26, 30, 34])
+
+print("Temperatures for 10 days:")
+print(temp)
+
+# Display temperatures for the first 3 days
+print("\nFirst 3 days:")
+print(temp[:3])
+
+# Display temperatures from day 5 to day 8
+print("\nTemperatures from day 5 to day 8:")
+print(temp[4:8])
+
+# Calculate statistical measures
+print("\nAverage Temperature:", np.mean(temp))
+print("Maximum Temperature:", np.max(temp))
+print("Minimum Temperature:", np.min(temp))
+print("Total Temperature:", np.sum(temp))
+
+# Increase every temperature by 2°C using broadcasting
+modified_temp = temp + 2
+
+# Display modified array
+print("\nModified Temperatures:")
+print(modified_temp)
