@@ -1,0 +1,32 @@
+# 1. Required Arguments
+def add(a, b):
+    print("Sum:", a + b)
+
+# 2. Keyword Arguments
+def student(name, age):
+    print("Name:", name)
+    print("Age:", age)
+
+# 3. Default Arguments
+def greet(name, message="Welcome"):
+    print(message, name)
+
+# 4. Variable-Length Arguments
+def total(*numbers):
+    print("Total:", sum(numbers))
+
+
+# Function calls
+
+print("Required Arguments:")
+add(10, 20)
+
+print("\nKeyword Arguments:")
+student(age=18, name="Saksham")
+
+print("\nDefault Arguments:")
+greet("Rahul")
+greet("Amit", "Hello")
+
+print("\nVariable-Length Arguments:")
+total(10, 20, 30, 40)
