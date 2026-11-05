@@ -1,0 +1,17 @@
+[
+    {
+        "Roll No": "1",
+        "Name": "Amit",
+        "Branch": "CSE"
+    },
+    {
+        "Roll No": "2",
+        "Name": "Sneha",
+        "Branch": "AI"
+    },
+    {
+        "Roll No": "3",
+        "Name": "Rahul",
+        "Branch": "CSE"
+    }
+]
