@@ -1,0 +1,57 @@
+import csv
+import json
+
+# Store student details in a CSV file
+students = [
+    ["Roll Number", "Name", "Branch", "Marks"],
+    [1, "Amit", "CSE", "85,90,80"],
+    [2, "Sneha", "AI", "75,80,85"],
+    [3, "Rahul", "CSE", "90,95,88"]
+]
+
+with open("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(students)
+
+# Read CSV file and calculate total, percentage, and grade
+processed_students = []
+
+with open("students.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        marks = list(map(int, row["Marks"].split(",")))
+
+        total = sum(marks)
+        percentage = total / len(marks)
+
+        if percentage >= 90:
+            grade = "A"
+        elif percentage >= 75:
+            grade = "B"
+        elif percentage >= 60:
+            grade = "C"
+        else:
+            grade = "D"
+
+        student = {
+            "Roll Number": row["Roll Number"],
+            "Name": row["Name"],
+            "Branch": row["Branch"],
+            "Marks": marks,
+            "Total": total,
+            "Percentage": percentage,
+            "Grade": grade
+        }
+
+        processed_students.append(student)
+
+# Store processed records in JSON file
+with open("students.json", "w") as file:
+    json.dump(processed_students, file, indent=4)
+
+print("Student records successfully saved in CSV and JSON files!")
+
+print("\nProcessed Student Records:")
+for student in processed_students:
+    print(student)
